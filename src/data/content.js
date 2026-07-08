@@ -4,13 +4,13 @@
  */
 
 export const siteConfig = {
-  name: "[EDIT: Your Name]",
+  name: "Alif Arlendi",
   tagline: "Web Developer & Security Analyst",
   intro:
     "[EDIT: One-line intro — e.g. Building secure web applications and analyzing vulnerabilities.]",
-  email: "[EDIT: your.email@example.com]",
-  github: "[EDIT: https://github.com/yourusername]",
-  linkedin: "[EDIT: https://linkedin.com/in/yourusername]",
+  email: "[EDIT: alifarlendi123@gmail.com]",
+  github: "[EDIT: https://github.com/whosArlend]",
+  linkedin: "[EDIT: https://linkedin.com/in/alif-arlendi]",
 }
 
 export const navLinks = [
