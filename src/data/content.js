@@ -2,6 +2,9 @@
  * Portfolio content
  */
 
+import ethicalHackerNetacadImg from "../assets/certificates/Ethical_Hacker_certificate_alifarlendi_NetAcad.png"
+import penTestUdemyImg from "../assets/certificates/PenTest_UDEMY.png"
+
 export const siteConfig = {
   name: "Alif Arlendi",
 
@@ -211,12 +214,14 @@ export const certificationsContent = {
       title: "Website Hacking / Penetration Testing",
       issuer: "zSecurity (Udemy)",
       year: "2026",
+      image: penTestUdemyImg,
     },
 
     {
       title: "Ethical Hacker",
       issuer: "Cisco Networking Academy",
       year: "2026",
+      image: ethicalHackerNetacadImg,
     },
   ],
 }
