@@ -1,24 +1,83 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Mail, Send } from "lucide-react"
+import emailjs from "@emailjs/browser"
 import SectionWrapper from "./SectionWrapper"
 import { IconGitHub, IconLinkedIn } from "./Icons"
 import { siteConfig } from "../data/content"
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" })
+  const [isSending, setIsSending] = useState(false)
+  const [feedback, setFeedback] = useState(null)
+  const [animateFeedback, setAnimateFeedback] = useState(false)
+
+  // Control feedback transition animation
+  useEffect(() => {
+    if (feedback) {
+      const timer = setTimeout(() => setAnimateFeedback(true), 10)
+      return () => clearTimeout(timer)
+    } else {
+      setAnimateFeedback(false)
+    }
+  }, [feedback])
 
   const handleChange = (e) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  // Opens the user's email client with pre-filled content — no backend needed
-  const handleSubmit = (e) => {
+  // Handle contact form submission via EmailJS
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio Contact from ${formState.name}`)
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`,
-    )
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`
+
+    const name = formState.name.trim()
+    const email = formState.email.trim()
+    const message = formState.message.trim()
+
+    // Validate presence
+    if (!name || !email || !message) {
+      setFeedback({ type: "error", text: "All fields are required." })
+      return
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      setFeedback({ type: "error", text: "Please enter a valid email address." })
+      return
+    }
+
+    setIsSending(true)
+    setFeedback(null)
+
+    // Load config from Vite environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name,
+          email,
+          message,
+        },
+        publicKey
+      )
+
+      // Handle successful submission
+      setFeedback({ type: "success", text: "Your message has been sent successfully." })
+      setFormState({ name: "", email: "", message: "" }) // Reset input fields
+    } catch (error) {
+      console.error("EmailJS submission failure:", error)
+      setFeedback({
+        type: "error",
+        text: "Something went wrong. Please try again later.",
+      })
+    } finally {
+      setIsSending(false)
+    }
   }
 
   const socialLinks = [
@@ -70,10 +129,11 @@ export default function Contact() {
               id="name"
               name="name"
               required
+              disabled={isSending}
               value={formState.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
+              className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
@@ -86,10 +146,11 @@ export default function Contact() {
               id="email"
               name="email"
               required
+              disabled={isSending}
               value={formState.email}
               onChange={handleChange}
               placeholder="your.email@example.com"
-              className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
+              className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
@@ -101,21 +162,51 @@ export default function Contact() {
               id="message"
               name="message"
               required
+              disabled={isSending}
               rows={4}
               value={formState.message}
               onChange={handleChange}
               placeholder="Your message..."
-              className="w-full resize-none border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
+              className="w-full resize-none border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed"
             />
           </div>
 
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 border border-black bg-black px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-80"
-          >
-            <Send size={14} />
-            Send Message
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              type="submit"
+              disabled={isSending}
+              className="inline-flex items-center justify-center gap-2 border border-black bg-black px-6 py-3 text-sm font-medium text-white transition-all hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed w-fit cursor-pointer"
+            >
+              {isSending ? (
+                <>
+                  <svg className="animate-spin h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send size={14} />
+                  Send Message
+                </>
+              )}
+            </button>
+
+            {feedback && (
+              <div
+                className={`p-3 border text-xs font-semibold transition-all duration-500 ease-out transform ${
+                  animateFeedback ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+                } ${
+                  feedback.type === "success"
+                    ? "border-black bg-black text-white"
+                    : "border-red-600 bg-red-50 text-red-700 dark:bg-red-950/10 dark:text-red-400"
+                }`}
+              >
+                {feedback.text}
+              </div>
+            )}
+          </div>
         </form>
       </div>
     </SectionWrapper>

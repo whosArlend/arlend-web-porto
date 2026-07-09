@@ -30,7 +30,7 @@ export default function Experience() {
               </div>
 
               <p className="mt-1 text-sm font-medium text-gray-500">{item.company}</p>
-              <p className="mt-2 text-sm leading-relaxed text-black">{item.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-black text-justify">{item.description}</p>
             </li>
           ))}
         </ul>
