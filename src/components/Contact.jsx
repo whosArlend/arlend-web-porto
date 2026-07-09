@@ -36,8 +36,10 @@ export default function Contact() {
       <div className="mt-10 grid gap-12 md:grid-cols-2">
         {/* Social links */}
         <div>
-          <p className="text-base leading-relaxed text-black">
-            [EDIT: Add a short message — e.g. Open to internships, collaborations, or security research.]
+          <p className="text-base leading-relaxed text-black text-justify">
+          I'm always open to new opportunities, collaborations, 
+          and meaningful projects in web development and cybersecurity. 
+          Feel free to reach out if you'd like to connect or work together.
           </p>
 
           <ul className="mt-8 flex flex-col gap-4">
@@ -70,7 +72,7 @@ export default function Contact() {
               required
               value={formState.name}
               onChange={handleChange}
-              placeholder="[EDIT: placeholder]"
+              placeholder="Your name"
               className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
             />
           </div>
@@ -86,7 +88,7 @@ export default function Contact() {
               required
               value={formState.email}
               onChange={handleChange}
-              placeholder="[EDIT: your.email@example.com]"
+              placeholder="your.email@example.com"
               className="w-full border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
             />
           </div>
@@ -102,7 +104,7 @@ export default function Contact() {
               rows={4}
               value={formState.message}
               onChange={handleChange}
-              placeholder="[EDIT: Your message...]"
+              placeholder="Your message..."
               className="w-full resize-none border border-gray-300 bg-white px-4 py-2.5 text-sm text-black placeholder:text-gray-300 focus:border-black focus:outline-none"
             />
           </div>

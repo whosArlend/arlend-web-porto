@@ -1,16 +1,20 @@
 /**
- * Portfolio content — edit this file to customize your site.
- * All placeholder values are marked with [EDIT: ...].
+ * Portfolio content
  */
 
 export const siteConfig = {
   name: "Alif Arlendi",
+
   tagline: "Web Developer & Security Analyst",
+
   intro:
-    "[EDIT: One-line intro — e.g. Building secure web applications and analyzing vulnerabilities.]",
-  email: "[EDIT: alifarlendi123@gmail.com]",
-  github: "[EDIT: https://github.com/whosArlend]",
-  linkedin: "[EDIT: https://linkedin.com/in/alif-arlendi]",
+    "Computer Engineering student passionate about building modern web applications and improving cybersecurity through vulnerability assessment and secure software development.",
+
+  email: "alifarlendi123@gmail.com",
+
+  github: "https://github.com/whosArlend",
+
+  linkedin: "https://linkedin.com/in/alif-arlendi",
 }
 
 export const navLinks = [
@@ -24,38 +28,57 @@ export const navLinks = [
 
 export const aboutContent = {
   heading: "About",
+
   paragraphs: [
-    "Computer Engineering student with a passion for building web applications and securing digital systems.",
-    "My background spans full-stack web development and IT security, with a focus on vulnerability assessment and security analysis. I enjoy bridging the gap between development and defense — writing clean code while thinking like an attacker.",
-    "[EDIT: Add a personal sentence about your goals, interests, or what you're currently working on.]",
+    "I'm a Computer Engineering student with a strong passion for web development and cybersecurity.",
+
+    "My experience includes developing responsive web applications and performing vulnerability assessments using industry-standard security tools. I enjoy building secure, scalable, and user-friendly software while continuously expanding my knowledge of offensive and defensive security.",
+
+    "Currently, I'm focusing on full-stack web development, penetration testing, and security engineering while creating projects that solve real-world problems and strengthen my technical expertise.",
   ],
 }
 
 export const skillsContent = {
   heading: "Skills",
+
   groups: [
     {
       title: "Development",
+
       items: [
         "React",
         "Vue",
         "Flask",
         "FastAPI",
         "JavaScript",
+        "TypeScript",
         "PHP",
+        "Node.js",
         "MySQL",
+        "PostgreSQL",
         "Docker",
         "Git",
+        "Tailwind CSS",
+        "REST API",
       ],
     },
+
     {
       title: "Security",
+
       items: [
         "Burp Suite",
         "Nmap",
         "Wireshark",
         "Kali Linux",
         "OWASP Top 10",
+        "OpenVAS",
+        "Nuclei",
+        "SQLMap",
+        "Dalfox",
+        "ParamSpider",
+        "Gau",
+        "Httpx",
         "Vulnerability Assessment",
       ],
     },
@@ -64,28 +87,59 @@ export const skillsContent = {
 
 export const projectsContent = {
   heading: "Projects",
+
   items: [
     {
       title: "KataFinder",
+
       description:
-        "[EDIT: Short description — e.g. A kata search and discovery tool for martial arts practitioners.]",
-      tech: ["React", "JavaScript", "[EDIT: add more]"],
-      github: "[EDIT: https://github.com/yourusername/katafinder]",
-      live: "[EDIT: https://katafinder.example.com or leave as #]",
+        "A modern web application for searching and exploring Indonesian words with a clean, intuitive, and responsive user interface.",
+
+      tech: [
+        "React",
+        "JavaScript",
+        "Tailwind CSS",
+        "Vite",
+      ],
+
+      github: "https://github.com/whosArlend/katafinder",
+
+      live: "#",
     },
+
     {
       title: "Attack Defense Platform",
+
       description:
-        "Capstone project — a full-stack platform for simulating and monitoring network attack/defense scenarios with integrated IDS/IPS.",
-      tech: ["Docker", "Flask", "React", "PostgreSQL", "Snort IDS/IPS"],
-      github: "[EDIT: https://github.com/yourusername/attack-defense-platform]",
-      live: "[EDIT: https://your-capstone.example.com or leave as #]",
+        "A capstone project designed to simulate attack and defense scenarios by integrating monitoring, vulnerability assessment, and intrusion detection into a modern web platform.",
+
+      tech: [
+        "Docker",
+        "Flask",
+        "React",
+        "PostgreSQL",
+        "Snort IDS/IPS",
+      ],
+
+      github: "https://github.com/whosArlend/attack-defense-platform",
+
+      live: "#",
     },
+
     {
-      title: "[EDIT: Project Name]",
-      description: "[EDIT: Short project description.]",
-      tech: ["[EDIT: Tech 1]", "[EDIT: Tech 2]"],
-      github: "[EDIT: https://github.com/yourusername/project]",
+      title: "Personal Portfolio",
+
+      description:
+        "A minimalist monochrome portfolio website showcasing my projects, technical skills, certifications, and professional experience.",
+
+      tech: [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+      ],
+
+      github: "https://github.com/whosArlend/portfolio",
+
       live: "#",
     },
   ],
@@ -93,46 +147,52 @@ export const projectsContent = {
 
 export const experienceContent = {
   heading: "Experience",
+
   items: [
     {
-      role: "Web Development Intern",
-      company: "[EDIT: Company Name]",
-      period: "[EDIT: Jan 2024 — Jun 2024]",
+      role: "Web Developer Intern",
+
+      company: "Department of Industry and Trade of Central Java Province",
+
+      period: "2025",
+
       description:
-        "[EDIT: Brief description — e.g. Built and maintained client-facing web applications using React and REST APIs.]",
+        "Developed and maintained internal web applications, collaborated with the development team, and improved application functionality, usability, and performance.",
     },
+
     {
       role: "IT Security Intern",
-      company: "[EDIT: Company Name]",
-      period: "[EDIT: Jul 2024 — Dec 2024]",
+
+      company: "Department of Industry and Trade of Central Java Province",
+
+      period: "2025",
+
       description:
-        "[EDIT: Brief description — e.g. Conducted vulnerability assessments, performed penetration tests, and documented findings.]",
+        "Conducted vulnerability assessments on government web applications using tools such as Burp Suite, Nmap, OpenVAS, Nuclei, Dalfox, SQLMap, and Wireshark. Documented security findings and provided remediation recommendations based on OWASP Top 10.",
     },
   ],
 }
 
 export const certificationsContent = {
   heading: "Certifications",
+
   items: [
     {
       title: "Website Hacking / Penetration Testing",
       issuer: "zSecurity (Udemy)",
-      year: "[EDIT: 2024]",
+      year: "2025",
     },
+
     {
       title: "OverTheWire — Natas",
       issuer: "OverTheWire",
-      year: "[EDIT: 2024]",
+      year: "2025",
     },
+
     {
       title: "Hack The Box",
-      issuer: "Hack The Box Academy",
-      year: "[EDIT: 2024]",
-    },
-    {
-      title: "[EDIT: Certification Name]",
-      issuer: "[EDIT: Issuer]",
-      year: "[EDIT: Year]",
+      issuer: "Hack The Box",
+      year: "2025",
     },
   ],
 }
