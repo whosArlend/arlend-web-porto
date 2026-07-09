@@ -152,12 +152,23 @@ export const experienceContent = {
     {
       role: "Web Developer Intern",
 
-      company: "Department of Industry and Trade of Central Java Province",
+      company: "Faculty of Economics and Business",
 
-      period: "2025",
+      period: "2022",
 
       description:
-        "Developed and maintained internal web applications, collaborated with the development team, and improved application functionality, usability, and performance.",
+        "Developed and maintained a room reservation web application for the Faculty of Economics and Business, enabling users to efficiently book rooms while improving the overall reservation workflow and user experience.",
+    },
+
+    {
+      role: "Web Developer Intern",
+
+      company: "Faculty of Economics and Business",
+
+      period: "2024 — 2025",
+
+      description:
+        "Built and maintained a web-based correspondence management system that simplified the management of incoming and outgoing letters while improving efficiency and accessibility for users.",
     },
 
     {
@@ -165,10 +176,10 @@ export const experienceContent = {
 
       company: "Department of Industry and Trade of Central Java Province",
 
-      period: "2025",
+      period: "2026",
 
       description:
-        "Conducted vulnerability assessments on government web applications using tools such as Burp Suite, Nmap, OpenVAS, Nuclei, Dalfox, SQLMap, and Wireshark. Documented security findings and provided remediation recommendations based on OWASP Top 10.",
+        "Conducted vulnerability assessments on government web applications using tools such as Burp Suite, Nmap, and Kali Linux. Documented security findings and provided remediation recommendations based on OWASP Top 10.",
     },
   ],
 }
