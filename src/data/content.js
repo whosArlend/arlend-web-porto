@@ -172,7 +172,7 @@ export const experienceContent = {
       period: "2022",
 
       description:
-        "Developed and maintained a room reservation web application for the Faculty of Economics and Business, enabling users to efficiently book rooms while improving the overall reservation workflow and user experience.",
+        "Developed and maintained a web-based room reservation system, improving the efficiency of room booking, reservation management, and overall user experience.",
     },
 
     {
