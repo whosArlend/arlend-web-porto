@@ -43,27 +43,27 @@ export const skillsContent = {
 
   groups: [
     {
-      title: "Languages & Frameworks",
+      title: "Programming Languages",
 
       items: [
-        "HTML5",
-        "CSS3",
         "JavaScript",
+        "TypeScript",
         "PHP",
-        "React",
-        "Node.js",
-        "Tailwind CSS",
         "Python",
+        "SQL",
+        "Bash",
       ],
     },
 
     {
-      title: "Database & Tools",
+      title: "Web Development",
 
       items: [
-        "MySQL",
-        "PostgreSQL",
-        "Git",
+        "HTML5",
+        "CSS3",
+        "React",
+        "Node.js",
+        "Tailwind CSS",
         "REST API",
         "Vite",
       ],
@@ -76,23 +76,27 @@ export const skillsContent = {
         "Web Application Security",
         "Vulnerability Assessment",
         "Penetration Testing",
-        "Network Security",
         "OWASP Top 10",
-      ],
-    },
-
-    {
-      title: "Security Tools",
-
-      items: [
         "Burp Suite",
         "Nmap",
         "Wireshark",
-        "Kali Linux",
         "Metasploit Framework",
         "OpenVAS",
         "Nuclei",
         "SQLMap",
+      ],
+    },
+
+    {
+      title: "Tools & Platforms",
+
+      items: [
+        "Git",
+        "Docker",
+        "Linux",
+        "Kali Linux",
+        "MySQL",
+        "PostgreSQL",
         "Maltego",
         "theHarvester",
       ],
