@@ -180,19 +180,13 @@ export const certificationsContent = {
     {
       title: "Website Hacking / Penetration Testing",
       issuer: "zSecurity (Udemy)",
-      year: "2025",
+      year: "2026",
     },
 
     {
-      title: "OverTheWire — Natas",
-      issuer: "OverTheWire",
-      year: "2025",
-    },
-
-    {
-      title: "Hack The Box",
-      issuer: "Hack The Box",
-      year: "2025",
+      title: "Ethical Hacker",
+      issuer: "Cisco Networking Academy",
+      year: "2026",
     },
   ],
 }
