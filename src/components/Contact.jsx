@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Mail, Send } from "lucide-react"
 import emailjs from "@emailjs/browser"
 import SectionWrapper from "./SectionWrapper"
@@ -10,8 +10,9 @@ export default function Contact() {
   const [isSending, setIsSending] = useState(false)
   const [feedback, setFeedback] = useState(null)
   const [animateFeedback, setAnimateFeedback] = useState(false)
+  const dismissTimerRef = useRef(null)
 
-  // Control feedback transition animation
+  // Fade-in animation for feedback messages
   useEffect(() => {
     if (feedback) {
       const timer = setTimeout(() => setAnimateFeedback(true), 10)
@@ -21,8 +22,45 @@ export default function Contact() {
     }
   }, [feedback])
 
+  // Auto-dismiss feedback after 5 seconds
+  useEffect(() => {
+    if (feedback) {
+      // Clear any existing timer before starting a new one
+      if (dismissTimerRef.current) clearTimeout(dismissTimerRef.current)
+
+      dismissTimerRef.current = setTimeout(() => {
+        setFeedback(null)
+        dismissTimerRef.current = null
+      }, 5000)
+    }
+
+    // Cleanup timer on unmount
+    return () => {
+      if (dismissTimerRef.current) {
+        clearTimeout(dismissTimerRef.current)
+        dismissTimerRef.current = null
+      }
+    }
+  }, [feedback])
+
   const handleChange = (e) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  // Generate a formatted timestamp in the user's local timezone
+  const getFormattedTimestamp = () => {
+    const now = new Date()
+    const options = { day: "numeric", month: "long", year: "numeric" }
+    const datePart = now.toLocaleDateString("en-GB", options)
+    const hours = String(now.getHours()).padStart(2, "0")
+    const minutes = String(now.getMinutes()).padStart(2, "0")
+
+    // Resolve the user's local timezone abbreviation
+    const tzName = Intl.DateTimeFormat("en", { timeZoneName: "short" })
+      .formatToParts(now)
+      .find((part) => part.type === "timeZoneName")?.value || "WIB"
+
+    return `${datePart}, ${hours}:${minutes} ${tzName}`
   }
 
   // Handle contact form submission via EmailJS
@@ -62,13 +100,14 @@ export default function Contact() {
           name,
           email,
           message,
+          time: getFormattedTimestamp(),
         },
         publicKey
       )
 
       // Handle successful submission
       setFeedback({ type: "success", text: "Your message has been sent successfully." })
-      setFormState({ name: "", email: "", message: "" }) // Reset input fields
+      setFormState({ name: "", email: "", message: "" })
     } catch (error) {
       console.error("EmailJS submission failure:", error)
       setFeedback({
@@ -118,7 +157,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        {/* Contact form — submits via mailto */}
+        {/* Contact form — submits via EmailJS */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-gray-500">
