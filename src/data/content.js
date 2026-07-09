@@ -123,20 +123,19 @@ export const projectsContent = {
     },
 
     {
-      title: "Attack Defense Platform",
+      title: "TEKSPACE Room Reservation System",
 
       description:
-        "A capstone project designed to simulate attack and defense scenarios by integrating monitoring, vulnerability assessment, and intrusion detection into a modern web platform.",
+        "A web-based room reservation and management system designed for campus environments, enabling students and lecturers to efficiently book, manage, and monitor room availability through an intuitive interface.",
 
       tech: [
-        "Docker",
-        "Flask",
         "React",
-        "PostgreSQL",
-        "Snort IDS/IPS",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
       ],
 
-      github: "https://github.com/whosArlend/attack-defense-platform",
+      github: "https://github.com/whosArlend/TA_SBD_KEL18",
 
       live: "#",
     },
