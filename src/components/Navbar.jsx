@@ -45,7 +45,7 @@ export default function Navbar() {
           href="#hero"
           className="text-sm font-semibold tracking-tight text-black link-underline"
         >
-          [EDIT: Initials]
+          AAPP
         </a>
 
         {/* Desktop links */}
